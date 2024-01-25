@@ -1,17 +1,20 @@
+<!-- Port: 8097 -->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <PlayerASection />
+  <PlayerBSection />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PlayerASection from "./components/PlayerASection.vue";
+import PlayerBSection from "./components/PlayerBSection.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    PlayerASection,
+    PlayerBSection,
+  },
+};
 </script>
 
 <style>
@@ -20,7 +23,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #212529;
   margin-top: 60px;
 }
 </style>
