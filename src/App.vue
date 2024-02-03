@@ -211,4 +211,34 @@ body {
     transform: translateX(0);
   }
 }
+
+.toast-leave-active {
+  animation: wobble-out 0.4s ease;
+}
+
+@keyframes wobble-out {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  60% {
+    transform: translateX(4px);
+  }
+  70% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+  90% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
 </style>

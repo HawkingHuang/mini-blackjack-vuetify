@@ -42,7 +42,7 @@
         >
         <v-card-text
           ><v-icon class="px-5">mdi-radiobox-marked</v-icon>Card
-          <strong>A3-6 (Auto 3-6)</strong> can be used to draw a card with that
+          <strong>A3-5 (Auto 3-5)</strong> can be used to draw a card with that
           particular points.</v-card-text
         >
         <v-card-text
@@ -50,10 +50,10 @@
           <strong>RL (Remove Last)</strong> to remove your last
           card.</v-card-text
         >
-        <v-card-text
+        <!-- <v-card-text
           ><v-icon class="px-5">mdi-radiobox-marked</v-icon>Use
           <strong>DB (Double Bet)</strong> to win 2 sets in a set.</v-card-text
-        >
+        > -->
         <v-card-actions>
           <v-btn @click="closeDialog" class="bg-blue-lighten-1">Close</v-btn>
         </v-card-actions>

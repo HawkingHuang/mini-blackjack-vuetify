@@ -38,6 +38,12 @@ export default createStore({
     },
   },
   mutations: {
+    playerAClick(state) {
+      const randomIndex = Math.floor(Math.random() * 11);
+      const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
+      state.PlayerATotal += cardValue;
+      state.PlayerAPool.push(cardValue);
+    },
     playerBClick(state) {
       const randomIndex = Math.floor(Math.random() * state.cardsPool.length);
       const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
@@ -94,6 +100,32 @@ export default createStore({
         }
       };
       drawOrNot();
+    },
+    applySpeCard(state, n) {
+      if (n === "A3" && state.cardsPool.includes(3)) {
+        const index = state.PlayerBPool.indexOf(n);
+        state.PlayerBPool.splice(index, 1);
+        setTimeout(() => {
+          state.PlayerBPool.push(3);
+          state.PlayerBTotal += 3;
+        }, 1000);
+      }
+      if (n === "A4" && state.cardsPool.includes(4)) {
+        const index = state.PlayerBPool.indexOf(n);
+        state.PlayerBPool.splice(index, 1);
+        setTimeout(() => {
+          state.PlayerBPool.push(4);
+          state.PlayerBTotal += 4;
+        }, 1000);
+      }
+      if (n === "A5" && state.cardsPool.includes(5)) {
+        const index = state.PlayerBPool.indexOf(n);
+        state.PlayerBPool.splice(index, 1);
+        setTimeout(() => {
+          state.PlayerBPool.push(5);
+          state.PlayerBTotal += 5;
+        }, 1000);
+      }
     },
     // changePlayerBStatus(state) {
     //   state.PlayerBDisabled = true;

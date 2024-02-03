@@ -9,22 +9,31 @@
             </v-card-item>
 
             <v-card-text class="text-h5"
-              >Score <span>{{ PlayerATotal }}</span></v-card-text
+              >Score
+              <span class="text-blue-lighten-1"
+                >? + {{ PlayerATotal }}</span
+              ></v-card-text
             >
           </v-card>
-          <!-- <v-btn density="comfortable" class="text-blue-lighten-1">Bet</v-btn> -->
         </div>
       </v-col>
       <v-col cols="12">
         <v-container class="mb-6">
           <v-row align="start" no-gutters class="ga-1">
             <transition-group name="toast">
-              <v-col v-for="n in PlayerAPool" cols="1" :key="n">
+              <v-col v-for="(n, index) in PlayerAPool" cols="1" :key="index">
                 <v-card width="4.5rem">
                   <v-card-item>
-                    <v-card-title class="text-h6 py-5 text-center">{{
-                      n
-                    }}</v-card-title>
+                    <v-card-title
+                      class="text-h6 py-5 text-center"
+                      :style="{
+                        color:
+                          index === 0 || typeof n !== 'number'
+                            ? 'white'
+                            : 'black',
+                      }"
+                      >{{ n }}</v-card-title
+                    >
                   </v-card-item>
                 </v-card>
               </v-col>
@@ -41,12 +50,20 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.bet();
+  },
   computed: {
     PlayerAPool() {
       return this.$store.getters.PlayerAPool;
     },
     PlayerATotal() {
-      return this.$store.state.PlayerATotal;
+      return this.$store.state.PlayerATotal - this.$store.state.PlayerAPool[0];
+    },
+  },
+  methods: {
+    bet() {
+      this.$store.commit("playerAClick");
     },
   },
 };

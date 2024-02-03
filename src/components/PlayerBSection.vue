@@ -9,7 +9,10 @@
             </v-card-item>
 
             <v-card-text class="text-h5"
-              >Score <span>{{ PlayerBTotal }}</span></v-card-text
+              >Score
+              <span class="text-blue-lighten-1">{{
+                PlayerBTotal
+              }}</span></v-card-text
             >
           </v-card>
           <v-btn
@@ -24,9 +27,13 @@
       <v-col cols="12">
         <v-container class="mb-6">
           <v-row align="start" no-gutters class="ga-1">
-            <transition-group name="toast">
-              <v-col v-for="n in PlayerBPool" cols="1" :key="n">
-                <v-card width="4.5rem">
+            <transition-group name="toast" mode="out-in">
+              <v-col v-for="(n, index) in PlayerBPool" cols="1" :key="index">
+                <v-card
+                  width="4.5rem"
+                  style="cursor: pointer"
+                  @click="applySpeCard(n, index)"
+                >
                   <v-card-item>
                     <v-card-title class="text-h6 py-5 text-center">{{
                       n
@@ -65,6 +72,10 @@ export default {
     stop() {
       this.$store.commit("playerBStop");
       // this.$store.commit("changePlayerBStatus");
+    },
+    applySpeCard(n) {
+      this.$store.commit("applySpeCard", n);
+      console.log(n);
     },
   },
 };
