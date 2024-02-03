@@ -1,5 +1,5 @@
 <template>
-  <v-container class="my-10 bg-blue-lighten-1 rounded-xl">
+  <v-container class="my-5 bg-blue-lighten-1 rounded-xl">
     <v-row no-gutters>
       <v-col cols="12">
         <div class="section-total-and-bet-a">
@@ -13,31 +13,28 @@
             >
           </v-card>
           <v-btn
-            density="comfortable"
             class="text-blue-lighten-1 ma-1"
             @click="bet"
+            :disabled="PlayerBDisabled"
             >Bet</v-btn
           >
-          <v-btn
-            density="comfortable"
-            class="text-blue-lighten-1 ma-1"
-            @click="stop"
-            >Stop</v-btn
-          >
+          <v-btn class="text-blue-lighten-1 ma-1" @click="stop">Stop</v-btn>
         </div>
       </v-col>
       <v-col cols="12">
         <v-container class="mb-6">
-          <v-row align="start" no-gutters class="ga-4">
-            <v-col v-for="n in PlayerBPool" cols="1" :key="n">
-              <v-card width="5rem">
-                <v-card-item>
-                  <v-card-title class="text-h4 py-5 text-center">{{
-                    n
-                  }}</v-card-title>
-                </v-card-item>
-              </v-card>
-            </v-col>
+          <v-row align="start" no-gutters class="ga-1">
+            <transition-group name="toast">
+              <v-col v-for="n in PlayerBPool" cols="1" :key="n">
+                <v-card width="4.5rem">
+                  <v-card-item>
+                    <v-card-title class="text-h6 py-5 text-center">{{
+                      n
+                    }}</v-card-title>
+                  </v-card-item>
+                </v-card>
+              </v-col>
+            </transition-group>
           </v-row>
         </v-container>
       </v-col>
@@ -57,6 +54,9 @@ export default {
     PlayerBTotal() {
       return this.$store.state.PlayerBTotal;
     },
+    PlayerBDisabled() {
+      return this.$store.state.PlayerBDisabled;
+    },
   },
   methods: {
     bet() {
@@ -64,26 +64,10 @@ export default {
     },
     stop() {
       this.$store.commit("playerBStop");
+      // this.$store.commit("changePlayerBStatus");
     },
   },
 };
 </script>
 
-<style>
-/*
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 1s ease;
-}
-
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-*/
-</style>
+<style></style>

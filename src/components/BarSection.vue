@@ -43,7 +43,7 @@
         <v-card-text
           ><v-icon class="px-5">mdi-radiobox-marked</v-icon>Card
           <strong>A3-6 (Auto 3-6)</strong> can be used to draw a card with that
-          particular point.</v-card-text
+          particular points.</v-card-text
         >
         <v-card-text
           ><v-icon class="px-5">mdi-radiobox-marked</v-icon>Use
