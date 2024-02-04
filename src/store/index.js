@@ -20,6 +20,7 @@ export default createStore({
         "A3",
         "A4",
         "A5",
+        "+24",
       ],
       PlayerAPool: [],
       PlayerBPool: [],

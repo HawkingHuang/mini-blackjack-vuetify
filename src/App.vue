@@ -20,6 +20,7 @@
       </div>
     </section>
     <v-main class="py-8">
+      <WelcomeDialog />
       <PlayerASection />
       <PlayerBSection />
       <BarSection />
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import WelcomeDialog from "./components/WelcomeDialog.vue";
 import PlayerASection from "./components/PlayerASection.vue";
 import PlayerBSection from "./components/PlayerBSection.vue";
 import BarSection from "./components/BarSection.vue";
@@ -35,6 +37,7 @@ export default {
   name: "App",
 
   components: {
+    WelcomeDialog,
     PlayerASection,
     PlayerBSection,
     BarSection,
