@@ -19,9 +19,9 @@
             class="text-blue-lighten-1 ma-1"
             @click="bet"
             :disabled="PlayerBDisabled"
-            >Bet</v-btn
+            >Hit</v-btn
           >
-          <v-btn class="text-blue-lighten-1 ma-1" @click="stop">Stop</v-btn>
+          <v-btn class="text-blue-lighten-1 ma-1" @click="stop">Stay</v-btn>
         </div>
       </v-col>
       <v-col cols="12">

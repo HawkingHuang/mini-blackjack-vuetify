@@ -47,7 +47,7 @@
         >
         <v-card-text
           ><v-icon class="px-5">mdi-radiobox-marked</v-icon>Use
-          <strong>RL (Remove Last)</strong> to remove your last
+          <strong>RL (Reverse Last)</strong> to remove your last
           card.</v-card-text
         >
         <!-- <v-card-text

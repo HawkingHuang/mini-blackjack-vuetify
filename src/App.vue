@@ -188,7 +188,7 @@ body {
 
 @keyframes wobble {
   0% {
-    transform: translateY(-40px);
+    transform: translateY(-100px);
     opacity: 0;
   }
   50% {
@@ -237,7 +237,7 @@ body {
     opacity: 1;
   }
   100% {
-    transform: translateY(-40px);
+    transform: translateY(-100px);
     opacity: 0;
   }
 }

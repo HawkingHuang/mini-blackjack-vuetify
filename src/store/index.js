@@ -108,6 +108,8 @@ export default createStore({
         setTimeout(() => {
           state.PlayerBPool.push(3);
           state.PlayerBTotal += 3;
+          const index = state.cardsPool.indexOf(3);
+          state.cardsPool.splice(index, 1);
         }, 1000);
       }
       if (n === "A4" && state.cardsPool.includes(4)) {
@@ -116,6 +118,8 @@ export default createStore({
         setTimeout(() => {
           state.PlayerBPool.push(4);
           state.PlayerBTotal += 4;
+          const index = state.cardsPool.indexOf(4);
+          state.cardsPool.splice(index, 1);
         }, 1000);
       }
       if (n === "A5" && state.cardsPool.includes(5)) {
@@ -124,6 +128,23 @@ export default createStore({
         setTimeout(() => {
           state.PlayerBPool.push(5);
           state.PlayerBTotal += 5;
+          const index = state.cardsPool.indexOf(5);
+          state.cardsPool.splice(index, 1);
+        }, 1000);
+      }
+      if (n === "RL") {
+        const index = state.PlayerBPool.indexOf(n);
+        state.PlayerBPool.splice(index, 1);
+        setTimeout(() => {
+          const remCard = state.PlayerBPool.pop();
+          if (typeof remCard === "number") {
+            state.PlayerBTotal -= remCard;
+            state.cardsPool.push(remCard);
+            console.log(state.cardsPool);
+          } else {
+            state.cardsPool.push(remCard);
+            console.log(state.cardsPool);
+          }
         }, 1000);
       }
     },
