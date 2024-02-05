@@ -28,6 +28,9 @@ export default createStore({
       PlayerBTotal: 0,
       PlayerADisabled: true,
       PlayerBDisabled: false,
+      playerAHasDrawn: true,
+      playerBHasDrawn: false,
+      result: "",
     };
   },
   getters: {
@@ -36,6 +39,31 @@ export default createStore({
     },
     PlayerBPool(state) {
       return state.PlayerBPool;
+    },
+    dialogVisible(state) {
+      return !state.playerAHasDrawn && !state.playerBHasDrawn;
+    },
+    winner(state) {
+      if (
+        state.PlayerATotal > state.PlayerBTotal &&
+        state.PlayerATotal <= 21 &&
+        state.PlayerBTotal <= 21
+      ) {
+        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. Computer won!`;
+      } else if (
+        state.PlayerATotal < state.PlayerBTotal &&
+        state.PlayerATotal <= 21 &&
+        state.PlayerBTotal <= 21
+      ) {
+        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. You won!`;
+      } else if (state.PlayerATotal > 21 && state.PlayerBTotal <= 21) {
+        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. You won!`;
+      } else if (state.PlayerBTotal > 21 && state.PlayerATotal <= 21) {
+        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. Computer won!`;
+      } else {
+        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. It's a draw!`;
+      }
+      return state.result;
     },
   },
   mutations: {
@@ -46,6 +74,8 @@ export default createStore({
       state.PlayerAPool.push(cardValue);
     },
     playerBClick(state) {
+      state.playerBHasDrawn = true;
+      console.log(state.playerBHasDrawn);
       const randomIndex = Math.floor(Math.random() * state.cardsPool.length);
       const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
       if (typeof cardValue === "number") {
@@ -55,6 +85,9 @@ export default createStore({
       state.PlayerBPool.push(cardValue);
     },
     playerBStop(state) {
+      // if (state.playerBHasDrawn === false) {
+      // }
+      state.playerBHasDrawn = false;
       state.PlayerADisabled = false;
       state.PlayerBDisabled = true;
 
@@ -63,12 +96,21 @@ export default createStore({
         const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
         if (typeof cardValue === "number") {
           state.PlayerATotal += cardValue;
+          state.PlayerADisabled = true;
+          setTimeout(() => {
+            state.PlayerBDisabled = false;
+          }, 2000);
+        } else {
+          setTimeout(() => {
+            drawOrNot();
+          }, 2000);
         }
         state.PlayerAPool.push(cardValue);
+        state.playerAHasDrawn = true;
 
-        setTimeout(() => {
-          drawOrNot();
-        }, 2000);
+        // setTimeout(() => {
+        //   drawOrNot();
+        // }, 2000);
       };
 
       const drawOrNot = () => {
@@ -81,14 +123,18 @@ export default createStore({
           } else {
             state.PlayerADisabled = true;
             state.PlayerBDisabled = false;
+            state.playerAHasDrawn = false;
+            console.log(state.playerAHasDrawn);
           }
-        } else if (state.PlayerATotal > 15 && state.PlayerATotal < 18) {
+        } else if (state.PlayerATotal >= 15 && state.PlayerATotal <= 18) {
           const probability = Math.random();
           if (probability < 0.4) {
             compDrawCard();
           } else {
             state.PlayerADisabled = true;
             state.PlayerBDisabled = false;
+            state.playerAHasDrawn = false;
+            console.log(state.playerAHasDrawn);
           }
         } else {
           const probability = Math.random();
@@ -97,6 +143,8 @@ export default createStore({
           } else {
             state.PlayerADisabled = true;
             state.PlayerBDisabled = false;
+            state.playerAHasDrawn = false;
+            console.log(state.playerAHasDrawn);
           }
         }
       };
@@ -148,6 +196,35 @@ export default createStore({
           }
         }, 1000);
       }
+    },
+    reset(state) {
+      state.cardsPool = [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        "RL",
+        "RL",
+        "A3",
+        "A4",
+        "A5",
+        "+24",
+      ];
+      state.PlayerAPool = [];
+      state.PlayerBPool = [];
+      state.PlayerATotal = 0;
+      state.PlayerBTotal = 0;
+      state.PlayerADisabled = true;
+      state.PlayerBDisabled = false;
+      state.playerAHasDrawn = true;
+      state.playerBHasDrawn = false;
     },
     // changePlayerBStatus(state) {
     //   state.PlayerBDisabled = true;

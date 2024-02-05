@@ -50,10 +50,6 @@
           <strong>RL (Reverse Last)</strong> to remove your last
           card.</v-card-text
         >
-        <!-- <v-card-text
-          ><v-icon class="px-5">mdi-radiobox-marked</v-icon>Use
-          <strong>DB (Double Bet)</strong> to win 2 sets in a set.</v-card-text
-        > -->
         <v-card-actions>
           <v-btn @click="closeDialog" class="bg-blue-lighten-1">Close</v-btn>
         </v-card-actions>

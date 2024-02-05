@@ -24,6 +24,7 @@
       <PlayerASection />
       <PlayerBSection />
       <BarSection />
+      <EndgameDialog />
     </v-main>
   </v-app>
 </template>
@@ -33,6 +34,7 @@ import WelcomeDialog from "./components/WelcomeDialog.vue";
 import PlayerASection from "./components/PlayerASection.vue";
 import PlayerBSection from "./components/PlayerBSection.vue";
 import BarSection from "./components/BarSection.vue";
+import EndgameDialog from "./components/EndgameDialog.vue";
 export default {
   name: "App",
 
@@ -41,6 +43,7 @@ export default {
     PlayerASection,
     PlayerBSection,
     BarSection,
+    EndgameDialog,
   },
 };
 </script>
