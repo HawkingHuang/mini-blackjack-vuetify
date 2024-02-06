@@ -60,4 +60,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scpoed></style>

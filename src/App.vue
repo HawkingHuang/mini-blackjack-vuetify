@@ -20,6 +20,7 @@
       </div>
     </section>
     <v-main class="py-8">
+      <DrawHint />
       <WelcomeDialog />
       <PlayerASection />
       <PlayerBSection />
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+import DrawHint from "./components/DrawHint.vue";
 import WelcomeDialog from "./components/WelcomeDialog.vue";
 import PlayerASection from "./components/PlayerASection.vue";
 import PlayerBSection from "./components/PlayerBSection.vue";
@@ -39,6 +41,7 @@ export default {
   name: "App",
 
   components: {
+    DrawHint,
     WelcomeDialog,
     PlayerASection,
     PlayerBSection,

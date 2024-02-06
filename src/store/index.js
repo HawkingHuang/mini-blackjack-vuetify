@@ -30,6 +30,7 @@ export default createStore({
       PlayerBDisabled: false,
       playerAHasDrawn: true,
       playerBHasDrawn: false,
+      limit: 21,
       result: "",
     };
   },
@@ -46,19 +47,25 @@ export default createStore({
     winner(state) {
       if (
         state.PlayerATotal > state.PlayerBTotal &&
-        state.PlayerATotal <= 21 &&
-        state.PlayerBTotal <= 21
+        state.PlayerATotal <= state.limit &&
+        state.PlayerBTotal <= state.limit
       ) {
         state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. Computer won!`;
       } else if (
         state.PlayerATotal < state.PlayerBTotal &&
-        state.PlayerATotal <= 21 &&
-        state.PlayerBTotal <= 21
+        state.PlayerATotal <= state.limit &&
+        state.PlayerBTotal <= state.limit
       ) {
         state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. You won!`;
-      } else if (state.PlayerATotal > 21 && state.PlayerBTotal <= 21) {
+      } else if (
+        state.PlayerATotal > state.limit &&
+        state.PlayerBTotal <= state.limit
+      ) {
         state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. You won!`;
-      } else if (state.PlayerBTotal > 21 && state.PlayerATotal <= 21) {
+      } else if (
+        state.PlayerBTotal > state.limit &&
+        state.PlayerATotal <= state.limit
+      ) {
         state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. Computer won!`;
       } else {
         state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. It's a draw!`;
@@ -105,10 +112,6 @@ export default createStore({
         }
         state.PlayerAPool.push(cardValue);
         state.playerAHasDrawn = true;
-
-        // setTimeout(() => {
-        //   drawOrNot();
-        // }, 2000);
       };
 
       const drawOrNot = () => {
@@ -193,6 +196,11 @@ export default createStore({
             console.log(state.cardsPool);
           }
         }, 1000);
+      }
+      if (n === "+24") {
+        const index = state.PlayerBPool.indexOf(n);
+        state.PlayerBPool.splice(index, 1);
+        state.limit = 24;
       }
     },
     reset(state) {

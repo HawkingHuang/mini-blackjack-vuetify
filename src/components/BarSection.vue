@@ -12,7 +12,7 @@
       <span>End</span>
     </v-btn>
 
-    <v-btn value="reset">
+    <v-btn @click="reset" value="reset">
       <v-icon>mdi-cached</v-icon>
 
       <span>Reset</span>
@@ -71,6 +71,9 @@ export default {
     },
     closeDialog() {
       this.dialogVisible = false;
+    },
+    reset() {
+      this.$store.commit("reset");
     },
   },
 };
