@@ -71,7 +71,6 @@ export default {
     },
     stop() {
       this.$store.commit("playerBStop");
-      // this.$store.commit("changePlayerBStatus");
     },
     applySpeCard(n) {
       this.$store.commit("applySpeCard", n);

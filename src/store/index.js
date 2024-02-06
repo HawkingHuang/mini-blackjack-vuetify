@@ -85,8 +85,6 @@ export default createStore({
       state.PlayerBPool.push(cardValue);
     },
     playerBStop(state) {
-      // if (state.playerBHasDrawn === false) {
-      // }
       state.playerBHasDrawn = false;
       state.PlayerADisabled = false;
       state.PlayerBDisabled = true;
@@ -225,10 +223,8 @@ export default createStore({
       state.PlayerBDisabled = false;
       state.playerAHasDrawn = true;
       state.playerBHasDrawn = false;
+      this.commit("playerAClick");
     },
-    // changePlayerBStatus(state) {
-    //   state.PlayerBDisabled = true;
-    // },
   },
   actions: {},
   modules: {},
