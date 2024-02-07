@@ -26,15 +26,6 @@
         >Besides, there are special cards, too.</v-card-text
       >
       <v-card-text class="text-h5"
-        ><strong>A3-A5</strong> lets you immediately get card 3-5 (if the
-        computer doesn't hold that particular card, and you don't draw that card
-        already).</v-card-text
-      >
-      <v-card-text class="text-h5"
-        >You can use <strong>RL</strong> (Reverse Last) to return your last
-        card.</v-card-text
-      >
-      <v-card-text class="text-h5"
         >For more information, please refer to the
         <strong>Rules</strong> section.</v-card-text
       >
