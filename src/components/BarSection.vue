@@ -1,15 +1,15 @@
 <template>
   <v-bottom-navigation class="bg-blue-lighten-1">
     <v-btn value="start">
-      <v-icon>mdi-arrow-up</v-icon>
+      <v-icon>mdi-star</v-icon>
 
-      <span>Start</span>
-    </v-btn>
-
-    <v-btn value="end">
-      <v-icon>mdi-circle</v-icon>
-
-      <span>End</span>
+      <span
+        ><a
+          href="https://github.com/HawkingHuang/mini-blackjack-vuetify"
+          style="text-decoration: none; color: white"
+          >GitHub</a
+        ></span
+      >
     </v-btn>
 
     <v-btn @click="reset" value="reset">
@@ -52,8 +52,8 @@
             <div class="d-flex fill-height justify-center align-center">
               <div class="text-h5">
                 <p class="mr-2">
-                  1. There are normal cards 1-11, each represents its literal
-                  points.
+                  &#8544;. There are normal cards 1-11, each represents its
+                  literal points.
                 </p>
                 <div
                   style="
@@ -83,8 +83,8 @@
             <div class="d-flex fill-height justify-center align-center">
               <div class="text-h5">
                 <p class="mr-2">
-                  2. When the game ends, whoever is close to 21 but does not
-                  exceed it wins a set.
+                  &#8545;. When the game ends, whoever is close to 21 but does
+                  not exceed it wins a set.
                 </p>
                 <div
                   style="
@@ -122,8 +122,8 @@
             <div class="d-flex fill-height justify-center align-center">
               <div class="text-h5">
                 <p class="mr-2">
-                  3. Card A3-5 (Auto 3-5) can be used to draw a card with that
-                  particular points.
+                  &#8546;. Card A3-5 (Auto 3-5) can be used to draw a card with
+                  that particular points.
                 </p>
                 <div
                   style="
@@ -141,7 +141,7 @@
                       >
                     </v-card-item>
                   </v-card>
-                  <p>&#61;</p>
+                  <p>&#8594;</p>
                   <v-card width="4.5rem">
                     <v-card-item>
                       <v-card-title class="text-h6 py-5 text-center"
@@ -159,7 +159,7 @@
             <div class="d-flex fill-height justify-center align-center">
               <div class="text-h5">
                 <p class="mr-2">
-                  4. Use RL (Reverse Last) to remove your last card.
+                  &#8547;. Use RL (Reverse Last) to remove your last card.
                 </p>
                 <div
                   style="
@@ -195,7 +195,7 @@
             <div class="d-flex fill-height justify-center align-center">
               <div class="text-h5">
                 <p class="mr-2">
-                  5. Use +24 to increase the limit to 24 points.
+                  &#8548;. Use +24 to increase the limit to 24 points.
                 </p>
                 <div
                   style="
@@ -214,7 +214,45 @@
                     </v-card-item>
                   </v-card>
                   <p>&#8594;</p>
-                  <p>New Limit: 24</p>
+                  <p>New Limit &#61; 24</p>
+                </div>
+              </div>
+            </div>
+          </v-sheet>
+        </v-carousel-item>
+        <v-carousel-item>
+          <v-sheet color="blue-lighten-1" height="100%">
+            <div class="d-flex fill-height justify-center align-center">
+              <div class="text-h5">
+                <p class="mr-2">
+                  &#8549;. With BS (Best Shot), you can draw a card that is best
+                  for you.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 2rem;
+                    margin: 1rem auto;
+                  "
+                >
+                  <v-card width="4.5rem">
+                    <v-card-item>
+                      <v-card-title class="text-h6 py-5 text-center"
+                        >16</v-card-title
+                      >
+                    </v-card-item>
+                  </v-card>
+                  <p>&#8594;</p>
+                  <p>Draw</p>
+                  <v-card width="4.5rem">
+                    <v-card-item>
+                      <v-card-title class="text-h6 py-5 text-center"
+                        >5</v-card-title
+                      >
+                    </v-card-item>
+                  </v-card>
                 </div>
               </div>
             </div>

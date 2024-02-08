@@ -8,12 +8,20 @@
               <v-card-title class="text-h4 pa-3">Player</v-card-title>
             </v-card-item>
 
-            <v-card-text class="text-h5"
-              >Score
-              <span class="text-blue-lighten-1">{{
-                PlayerBTotal
-              }}</span></v-card-text
-            >
+            <div style="display: flex; justify-content: space-between">
+              <v-card-text class="text-h5"
+                >Score
+                <span class="text-blue-lighten-1">{{
+                  PlayerBTotal
+                }}</span></v-card-text
+              >
+              <v-card-text class="text-h5"
+                >Limit
+                <span class="text-blue-lighten-1">{{
+                  this.$store.state.limit
+                }}</span></v-card-text
+              >
+            </div>
           </v-card>
           <v-btn
             class="text-blue-lighten-1 ma-1"
@@ -32,7 +40,7 @@
                 <v-card
                   width="4.5rem"
                   style="cursor: pointer"
-                  @click="applySpeCard(n, index)"
+                  @click="applySpeCard(n)"
                 >
                   <v-card-item>
                     <v-card-title class="text-h6 py-5 text-center">{{

@@ -21,6 +21,7 @@ export default createStore({
         "A4",
         "A5",
         "+24",
+        "BS",
       ],
       PlayerAPool: [],
       PlayerBPool: [],
@@ -202,6 +203,58 @@ export default createStore({
         state.PlayerBPool.splice(index, 1);
         state.limit = 24;
       }
+      if (n === "BS") {
+        const index = state.PlayerBPool.indexOf(n);
+        state.PlayerBPool.splice(index, 1);
+        if (state.limit === 21) {
+          if (state.PlayerBTotal <= 10 && state.cardsPool.includes(11)) {
+            setTimeout(() => {
+              state.PlayerBPool.push(11);
+              state.PlayerBTotal += 11;
+              const index = state.cardsPool.indexOf(11);
+              state.cardsPool.splice(index, 1);
+            }, 1000);
+          }
+          if (state.PlayerBTotal > 10) {
+            setTimeout(() => {
+              for (let limit = 21; limit > state.PlayerBTotal; limit--) {
+                if (state.cardsPool.includes(limit - state.PlayerBTotal)) {
+                  state.PlayerBPool.push(limit - state.PlayerBTotal);
+                  state.PlayerBTotal += limit - state.PlayerBTotal;
+                  const index = state.cardsPool.indexOf(
+                    limit - state.PlayerBTotal
+                  );
+                  state.cardsPool.splice(index, 1);
+                }
+              }
+            }, 1000);
+          }
+        }
+        if (state.limit === 24) {
+          if (state.PlayerBTotal <= 13 && state.cardsPool.includes(11)) {
+            setTimeout(() => {
+              state.PlayerBPool.push(11);
+              state.PlayerBTotal += 11;
+              const index = state.cardsPool.indexOf(11);
+              state.cardsPool.splice(index, 1);
+            }, 1000);
+          }
+          if (state.PlayerBTotal > 13) {
+            setTimeout(() => {
+              for (let limit = 24; limit > state.PlayerBTotal; limit--) {
+                if (state.cardsPool.includes(limit - state.PlayerBTotal)) {
+                  state.PlayerBPool.push(limit - state.PlayerBTotal);
+                  state.PlayerBTotal += limit - state.PlayerBTotal;
+                  const index = state.cardsPool.indexOf(
+                    limit - state.PlayerBTotal
+                  );
+                  state.cardsPool.splice(index, 1);
+                }
+              }
+            }, 1000);
+          }
+        }
+      }
     },
     reset(state) {
       state.cardsPool = [
@@ -222,6 +275,7 @@ export default createStore({
         "A4",
         "A5",
         "+24",
+        "BS",
       ];
       state.PlayerAPool = [];
       state.PlayerBPool = [];
