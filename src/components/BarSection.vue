@@ -274,9 +274,6 @@ export default {
     openDialog() {
       this.dialogVisible = true;
     },
-    // closeDialog() {
-    //   this.dialogVisible = false;
-    // },
     reset() {
       this.$store.commit("reset");
     },

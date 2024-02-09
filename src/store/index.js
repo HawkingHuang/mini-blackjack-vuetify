@@ -22,6 +22,7 @@ export default createStore({
         "A5",
         "+24",
         "BS",
+        "BS",
       ],
       PlayerAPool: [],
       PlayerBPool: [],
@@ -81,9 +82,9 @@ export default createStore({
       state.PlayerATotal += cardValue;
       state.PlayerAPool.push(cardValue);
     },
+
     playerBClick(state) {
       state.playerBHasDrawn = true;
-      console.log(state.playerBHasDrawn);
       const randomIndex = Math.floor(Math.random() * state.cardsPool.length);
       const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
       if (typeof cardValue === "number") {
@@ -92,33 +93,159 @@ export default createStore({
 
       state.PlayerBPool.push(cardValue);
     },
+
     playerBStop(state) {
       state.playerBHasDrawn = false;
       state.PlayerADisabled = false;
       state.PlayerBDisabled = true;
 
+      // const compDrawCard = () => {
+      //   const randomIndex = Math.floor(Math.random() * state.cardsPool.length);
+      //   const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
+      //   if (typeof cardValue === "number") {
+      //     state.PlayerATotal += cardValue;
+      //     state.PlayerADisabled = true;
+      //     console.log(state.PlayerAPool);
+      //     compAppSpeCard();
+      //     setTimeout(() => {
+      //       state.PlayerBDisabled = false;
+      //       console.log(state.PlayerAPool);
+      //       console.log(state.cardsPool);
+      //     }, 2000);
+      //   } else {
+      //     setTimeout(() => {
+      //       drawOrNot();
+      //     }, 2000);
+      //   }
+      //   state.PlayerAPool.push(cardValue);
+      //   state.playerAHasDrawn = true;
+      // };
+
       const compDrawCard = () => {
         const randomIndex = Math.floor(Math.random() * state.cardsPool.length);
         const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
         if (typeof cardValue === "number") {
+          state.PlayerAPool.push(cardValue);
           state.PlayerATotal += cardValue;
           state.PlayerADisabled = true;
+          console.log(state.PlayerAPool);
+          compAppSpeCard();
           setTimeout(() => {
             state.PlayerBDisabled = false;
+            console.log(state.PlayerAPool);
+            console.log(state.cardsPool);
           }, 2000);
         } else {
+          state.PlayerAPool.push(cardValue);
           setTimeout(() => {
             drawOrNot();
           }, 2000);
         }
-        state.PlayerAPool.push(cardValue);
         state.playerAHasDrawn = true;
       };
 
+      const compAppSpeCard = () => {
+        if (state.PlayerATotal > 21) {
+          if (state.PlayerAPool.includes("+24")) {
+            const index = state.PlayerBPool.indexOf("+24");
+            state.PlayerAPool.splice(index, 1);
+            state.limit = 24;
+          }
+          if (state.PlayerAPool.includes("RL")) {
+            const index = state.PlayerAPool.indexOf("RL");
+            state.PlayerAPool.splice(index, 1);
+            setTimeout(() => {
+              const remCard = state.PlayerAPool.pop();
+              if (typeof remCard === "number") {
+                state.PlayerATotal -= remCard;
+                state.cardsPool.push(remCard);
+              } else {
+                state.cardsPool.push(remCard);
+              }
+            }, 3000);
+          }
+        }
+
+        if (state.PlayerATotal > 10) {
+          // if (state.PlayerAPool.includes("BS")) {
+          //   const index = state.PlayerAPool.indexOf("BS");
+          //   state.PlayerAPool.splice(index, 1);
+          //   setTimeout(() => {
+          //     for (let limit = 21; limit > state.PlayerATotal; limit--) {
+          //       if (state.cardsPool.includes(limit - state.PlayerATotal)) {
+          //         state.PlayerAPool.push(limit - state.PlayerATotal);
+          //         state.PlayerATotal += limit - state.PlayerATotal;
+          //         const index = state.cardsPool.indexOf(
+          //           limit - state.PlayerATotal
+          //         );
+          //         state.cardsPool.splice(index, 1);
+          //       }
+          //     }
+          //   }, 1000);
+          // }
+          if (
+            state.PlayerAPool.includes("A5") &&
+            state.cardsPool.includes(5) &&
+            state.PlayerATotal <= 16
+          ) {
+            const index = state.PlayerAPool.indexOf("A5");
+            state.PlayerAPool.splice(index, 1);
+            setTimeout(() => {
+              state.PlayerAPool.push(5);
+              state.PlayerATotal += 5;
+              const index = state.cardsPool.indexOf(5);
+              state.cardsPool.splice(index, 1);
+            }, 3000);
+          }
+          if (
+            state.PlayerAPool.includes("A4") &&
+            state.cardsPool.includes(4) &&
+            state.PlayerATotal <= 17
+          ) {
+            const index = state.PlayerAPool.indexOf("A4");
+            state.PlayerAPool.splice(index, 1);
+            setTimeout(() => {
+              state.PlayerAPool.push(4);
+              state.PlayerATotal += 4;
+              const index = state.cardsPool.indexOf(4);
+              state.cardsPool.splice(index, 1);
+            }, 3000);
+          }
+          if (
+            state.PlayerAPool.includes("A3") &&
+            state.cardsPool.includes(3) &&
+            state.PlayerATotal <= 18
+          ) {
+            const index = state.PlayerAPool.indexOf("A3");
+            state.PlayerAPool.splice(index, 1);
+            setTimeout(() => {
+              state.PlayerAPool.push(3);
+              state.PlayerATotal += 3;
+              const index = state.cardsPool.indexOf(3);
+              state.cardsPool.splice(index, 1);
+            }, 3000);
+          }
+        }
+      };
+
       const drawOrNot = () => {
-        if (state.PlayerATotal <= 11) {
+        if (
+          (state.limit === 21 && state.PlayerBTotal > 21) ||
+          (state.limit === 21 && state.PlayerATotal === 21)
+        ) {
+          state.PlayerADisabled = true;
+          state.PlayerBDisabled = false;
+          state.playerAHasDrawn = false;
+        } else if (
+          (state.limit === 24 && state.PlayerBTotal > 24) ||
+          (state.limit === 24 && state.PlayerATotal === 24)
+        ) {
+          state.PlayerADisabled = true;
+          state.PlayerBDisabled = false;
+          state.playerAHasDrawn = false;
+        } else if (state.PlayerATotal <= 10) {
           compDrawCard();
-        } else if (state.PlayerATotal > 11 && state.PlayerATotal < 15) {
+        } else if (state.PlayerATotal > 10 && state.PlayerATotal < 15) {
           const probability = Math.random();
           if (probability < 0.8) {
             compDrawCard();
@@ -126,7 +253,6 @@ export default createStore({
             state.PlayerADisabled = true;
             state.PlayerBDisabled = false;
             state.playerAHasDrawn = false;
-            console.log(state.playerAHasDrawn);
           }
         } else if (state.PlayerATotal >= 15 && state.PlayerATotal <= 18) {
           const probability = Math.random();
@@ -136,7 +262,6 @@ export default createStore({
             state.PlayerADisabled = true;
             state.PlayerBDisabled = false;
             state.playerAHasDrawn = false;
-            console.log(state.playerAHasDrawn);
           }
         } else {
           const probability = Math.random();
@@ -146,12 +271,12 @@ export default createStore({
             state.PlayerADisabled = true;
             state.PlayerBDisabled = false;
             state.playerAHasDrawn = false;
-            console.log(state.playerAHasDrawn);
           }
         }
       };
       drawOrNot();
     },
+
     applySpeCard(state, n) {
       if (n === "A3" && state.cardsPool.includes(3)) {
         const index = state.PlayerBPool.indexOf(n);
@@ -275,6 +400,7 @@ export default createStore({
         "A4",
         "A5",
         "+24",
+        "BS",
         "BS",
       ];
       state.PlayerAPool = [];
