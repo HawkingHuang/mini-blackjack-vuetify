@@ -36,6 +36,7 @@
             variant="elevated"
             color="grey-lighten-5"
             @click="props.onClick"
+            class="d-none"
             >Previous Rule</v-btn
           >
         </template>
@@ -44,14 +45,15 @@
             variant="elevated"
             color="grey-lighten-5"
             @click="props.onClick"
+            class="d-none"
             >Next Rule</v-btn
           >
         </template>
         <v-carousel-item>
           <v-sheet color="blue-lighten-1" height="100%">
             <div class="d-flex fill-height justify-center align-center">
-              <div class="text-h5">
-                <p class="mr-2">
+              <div class="text-body-1 text-md-h5 text-center">
+                <p class="mr-2 px-2">
                   &#8544;. There are normal cards 1-11, each represents its
                   literal points.
                 </p>
@@ -81,8 +83,8 @@
         <v-carousel-item>
           <v-sheet color="blue-lighten-1" height="100%">
             <div class="d-flex fill-height justify-center align-center">
-              <div class="text-h5">
-                <p class="mr-2">
+              <div class="text-body-1 text-md-h5 text-center">
+                <p class="mr-2 px-2">
                   &#8545;. When the game ends, whoever is close to 21 but does
                   not exceed it wins a set.
                 </p>
@@ -95,7 +97,6 @@
                     margin: 1rem auto;
                   "
                 >
-                  <p>Lose</p>
                   <v-card width="4.5rem">
                     <v-card-item>
                       <v-card-title class="text-h6 py-5 text-center"
@@ -111,7 +112,6 @@
                       >
                     </v-card-item>
                   </v-card>
-                  <p>Win</p>
                 </div>
               </div>
             </div>
@@ -120,8 +120,8 @@
         <v-carousel-item>
           <v-sheet color="blue-lighten-1" height="100%">
             <div class="d-flex fill-height justify-center align-center">
-              <div class="text-h5">
-                <p class="mr-2">
+              <div class="text-body-1 text-md-h5 text-center">
+                <p class="mr-2 px-2">
                   &#8546;. Card A3-5 (Auto 3-5) can be used to draw a card with
                   that particular points.
                 </p>
@@ -157,8 +157,8 @@
         <v-carousel-item>
           <v-sheet color="blue-lighten-1" height="100%">
             <div class="d-flex fill-height justify-center align-center">
-              <div class="text-h5">
-                <p class="mr-2">
+              <div class="text-body-1 text-md-h5 text-center">
+                <p class="mr-2 px-2">
                   &#8547;. Use RL (Reverse Last) to remove your last card.
                 </p>
                 <div
@@ -193,8 +193,8 @@
         <v-carousel-item>
           <v-sheet color="blue-lighten-1" height="100%">
             <div class="d-flex fill-height justify-center align-center">
-              <div class="text-h5">
-                <p class="mr-2">
+              <div class="text-body-1 text-md-h5 text-center">
+                <p class="mr-2 px-2">
                   &#8548;. Use +24 to increase the limit to 24 points.
                 </p>
                 <div
@@ -223,8 +223,8 @@
         <v-carousel-item>
           <v-sheet color="blue-lighten-1" height="100%">
             <div class="d-flex fill-height justify-center align-center">
-              <div class="text-h5">
-                <p class="mr-2">
+              <div class="text-body-1 text-md-h5 text-center">
+                <p class="mr-2 px-2">
                   &#8549;. With BS (Best Shot), you can draw a card that is best
                   for you.
                 </p>

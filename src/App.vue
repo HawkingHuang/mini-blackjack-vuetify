@@ -2,7 +2,7 @@
 <template>
   <v-app>
     <v-app-bar-title
-      class="text-h2 text-center text-blue-lighten-1 font-weight-black pt-4"
+      class="text-h4 text-md-h2 text-center text-blue-lighten-1 font-weight-black pt-4"
       >VV Mini-Blackjack</v-app-bar-title
     >
     <section class="sticky">

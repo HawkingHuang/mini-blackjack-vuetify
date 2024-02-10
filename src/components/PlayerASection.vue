@@ -3,12 +3,14 @@
     <v-row no-gutters>
       <v-col cols="12">
         <div class="section-total-and-bet-a">
-          <v-card width="400" class="mb-5 p-5">
+          <v-card width="400" class="mb-5 p-5 card">
             <v-card-item>
-              <v-card-title class="text-h4 pa-3">Computer</v-card-title>
+              <v-card-title class="text-h6 text-md-h4 pa-3"
+                >Computer</v-card-title
+              >
             </v-card-item>
 
-            <v-card-text class="text-h5"
+            <v-card-text class="text-body-1 text-md-h5"
               >Score
               <span class="text-blue-lighten-1"
                 >? + {{ PlayerATotal }}</span
@@ -72,4 +74,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@media (max-width: 37.5em) {
+  .card {
+    max-width: 15rem;
+  }
+}
+</style>

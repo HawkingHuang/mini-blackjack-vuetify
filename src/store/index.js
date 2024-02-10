@@ -99,28 +99,6 @@ export default createStore({
       state.PlayerADisabled = false;
       state.PlayerBDisabled = true;
 
-      // const compDrawCard = () => {
-      //   const randomIndex = Math.floor(Math.random() * state.cardsPool.length);
-      //   const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
-      //   if (typeof cardValue === "number") {
-      //     state.PlayerATotal += cardValue;
-      //     state.PlayerADisabled = true;
-      //     console.log(state.PlayerAPool);
-      //     compAppSpeCard();
-      //     setTimeout(() => {
-      //       state.PlayerBDisabled = false;
-      //       console.log(state.PlayerAPool);
-      //       console.log(state.cardsPool);
-      //     }, 2000);
-      //   } else {
-      //     setTimeout(() => {
-      //       drawOrNot();
-      //     }, 2000);
-      //   }
-      //   state.PlayerAPool.push(cardValue);
-      //   state.playerAHasDrawn = true;
-      // };
-
       const compDrawCard = () => {
         const randomIndex = Math.floor(Math.random() * state.cardsPool.length);
         const cardValue = state.cardsPool.splice(randomIndex, 1)[0];
@@ -129,8 +107,8 @@ export default createStore({
           state.PlayerATotal += cardValue;
           state.PlayerADisabled = true;
           console.log(state.PlayerAPool);
-          compAppSpeCard();
           setTimeout(() => {
+            compAppSpeCard();
             state.PlayerBDisabled = false;
             console.log(state.PlayerAPool);
             console.log(state.cardsPool);
@@ -162,7 +140,7 @@ export default createStore({
               } else {
                 state.cardsPool.push(remCard);
               }
-            }, 3000);
+            }, 2000);
           }
         }
 
@@ -195,7 +173,7 @@ export default createStore({
               state.PlayerATotal += 5;
               const index = state.cardsPool.indexOf(5);
               state.cardsPool.splice(index, 1);
-            }, 3000);
+            }, 2000);
           }
           if (
             state.PlayerAPool.includes("A4") &&
@@ -209,7 +187,7 @@ export default createStore({
               state.PlayerATotal += 4;
               const index = state.cardsPool.indexOf(4);
               state.cardsPool.splice(index, 1);
-            }, 3000);
+            }, 2000);
           }
           if (
             state.PlayerAPool.includes("A3") &&
@@ -223,7 +201,7 @@ export default createStore({
               state.PlayerATotal += 3;
               const index = state.cardsPool.indexOf(3);
               state.cardsPool.splice(index, 1);
-            }, 3000);
+            }, 2000);
           }
         }
       };
@@ -409,9 +387,11 @@ export default createStore({
       state.PlayerBTotal = 0;
       state.PlayerADisabled = true;
       state.PlayerBDisabled = false;
-      state.playerAHasDrawn = true;
-      state.playerBHasDrawn = false;
-      this.commit("playerAClick");
+      setTimeout(() => {
+        state.playerAHasDrawn = true;
+        state.playerBHasDrawn = false;
+        this.commit("playerAClick");
+      }, 500);
     },
   },
   actions: {},
