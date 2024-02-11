@@ -21,9 +21,15 @@
       </v-col>
       <v-col cols="12">
         <v-container class="mb-6">
-          <v-row align="start" no-gutters class="ga-1">
+          <v-row align="start">
             <transition-group name="toast">
-              <v-col v-for="(n, index) in PlayerAPool" cols="1" :key="index">
+              <v-col
+                v-for="(n, index) in PlayerAPool"
+                cols="3"
+                md="2"
+                lg="1"
+                :key="index"
+              >
                 <v-card width="4.5rem">
                   <v-card-item>
                     <!-- <v-card-title

@@ -19,7 +19,7 @@
         <div class="bubble"></div>
       </div>
     </section>
-    <v-main class="py-8">
+    <v-main class="py-4">
       <DrawHint />
       <WelcomeDialog />
       <PlayerASection />

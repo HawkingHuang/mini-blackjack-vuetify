@@ -16,7 +16,7 @@
         >.
       </v-card-text>
       <v-card-text class="text-body-1 text-md-h5"
-        >The set has basic card 1-11, no duplication.</v-card-text
+        >The set has basic cards 1-11, no duplication.</v-card-text
       >
       <v-card-text class="text-body-1 text-md-h5"
         >For example, if you draw card 3, then no one will get that card
@@ -30,6 +30,7 @@
         <strong>Rules</strong> section.</v-card-text
       >
       <v-card-actions>
+        <v-spacer></v-spacer>
         <v-btn @click="closeDialog" class="bg-blue-lighten-1">Close</v-btn>
       </v-card-actions>
     </v-card>

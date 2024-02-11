@@ -52,25 +52,25 @@ export default createStore({
         state.PlayerATotal <= state.limit &&
         state.PlayerBTotal <= state.limit
       ) {
-        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. Computer won!`;
+        state.result = `${state.PlayerATotal} : ${state.PlayerBTotal} Computer won!`;
       } else if (
         state.PlayerATotal < state.PlayerBTotal &&
         state.PlayerATotal <= state.limit &&
         state.PlayerBTotal <= state.limit
       ) {
-        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. You won!`;
+        state.result = `${state.PlayerATotal} : ${state.PlayerBTotal} You won!`;
       } else if (
         state.PlayerATotal > state.limit &&
         state.PlayerBTotal <= state.limit
       ) {
-        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. You won!`;
+        state.result = `${state.PlayerATotal} : ${state.PlayerBTotal} You won!`;
       } else if (
         state.PlayerBTotal > state.limit &&
         state.PlayerATotal <= state.limit
       ) {
-        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. Computer won!`;
+        state.result = `${state.PlayerATotal} : ${state.PlayerBTotal} Computer won!`;
       } else {
-        state.result = `Computer has ${state.PlayerATotal} points, and you have ${state.PlayerBTotal} points. It's a draw!`;
+        state.result = `${state.PlayerATotal} : ${state.PlayerBTotal} It's a draw!`;
       }
       return state.result;
     },
