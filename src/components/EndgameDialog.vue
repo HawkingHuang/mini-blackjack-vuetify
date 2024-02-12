@@ -3,6 +3,7 @@
     fullscreen
     v-model="$store.getters.dialogVisible"
     class="text-center"
+    transition="dialog-bottom-transition"
   >
     <v-card>
       <v-card-title class="text-h6 text-md-h4 bg-blue-lighten-1 py-10"

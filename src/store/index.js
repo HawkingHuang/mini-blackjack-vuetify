@@ -145,22 +145,37 @@ export default createStore({
         }
 
         if (state.PlayerATotal > 10) {
-          // if (state.PlayerAPool.includes("BS")) {
-          //   const index = state.PlayerAPool.indexOf("BS");
-          //   state.PlayerAPool.splice(index, 1);
-          //   setTimeout(() => {
-          //     for (let limit = 21; limit > state.PlayerATotal; limit--) {
-          //       if (state.cardsPool.includes(limit - state.PlayerATotal)) {
-          //         state.PlayerAPool.push(limit - state.PlayerATotal);
-          //         state.PlayerATotal += limit - state.PlayerATotal;
-          //         const index = state.cardsPool.indexOf(
-          //           limit - state.PlayerATotal
-          //         );
-          //         state.cardsPool.splice(index, 1);
-          //       }
-          //     }
-          //   }, 1000);
-          // }
+          if (state.PlayerAPool.includes("BS")) {
+            const index = state.PlayerAPool.indexOf("BS");
+            state.PlayerAPool.splice(index, 1);
+            if (state.limit === 21) {
+              setTimeout(() => {
+                for (let limit = 21; limit > state.PlayerATotal; limit--) {
+                  if (state.cardsPool.includes(limit - state.PlayerATotal)) {
+                    state.PlayerAPool.push(limit - state.PlayerATotal);
+                    state.PlayerATotal += limit - state.PlayerATotal;
+                    const index = state.cardsPool.indexOf(
+                      limit - state.PlayerATotal
+                    );
+                    state.cardsPool.splice(index, 1);
+                  }
+                }
+              }, 1000);
+            } else {
+              setTimeout(() => {
+                for (let limit = 24; limit > state.PlayerATotal; limit--) {
+                  if (state.cardsPool.includes(limit - state.PlayerATotal)) {
+                    state.PlayerAPool.push(limit - state.PlayerATotal);
+                    state.PlayerATotal += limit - state.PlayerATotal;
+                    const index = state.cardsPool.indexOf(
+                      limit - state.PlayerATotal
+                    );
+                    state.cardsPool.splice(index, 1);
+                  }
+                }
+              }, 1000);
+            }
+          }
           if (
             state.PlayerAPool.includes("A5") &&
             state.cardsPool.includes(5) &&
@@ -310,12 +325,17 @@ export default createStore({
         const index = state.PlayerBPool.indexOf(n);
         state.PlayerBPool.splice(index, 1);
         if (state.limit === 21) {
-          if (state.PlayerBTotal <= 10 && state.cardsPool.includes(11)) {
+          if (state.PlayerBTotal <= 10) {
             setTimeout(() => {
-              state.PlayerBPool.push(11);
-              state.PlayerBTotal += 11;
-              const index = state.cardsPool.indexOf(11);
-              state.cardsPool.splice(index, 1);
+              for (let i = 11; i > 0; i--) {
+                if (state.cardsPool.includes(i)) {
+                  state.PlayerBPool.push(i);
+                  state.PlayerBTotal += i;
+                  const index = state.cardsPool.indexOf(i);
+                  state.cardsPool.splice(index, i);
+                  break;
+                }
+              }
             }, 1000);
           }
           if (state.PlayerBTotal > 10) {
@@ -334,12 +354,17 @@ export default createStore({
           }
         }
         if (state.limit === 24) {
-          if (state.PlayerBTotal <= 13 && state.cardsPool.includes(11)) {
+          if (state.PlayerBTotal <= 13) {
             setTimeout(() => {
-              state.PlayerBPool.push(11);
-              state.PlayerBTotal += 11;
-              const index = state.cardsPool.indexOf(11);
-              state.cardsPool.splice(index, 1);
+              for (let i = 11; i > 0; i--) {
+                if (state.cardsPool.includes(i)) {
+                  state.PlayerBPool.push(i);
+                  state.PlayerBTotal += i;
+                  const index = state.cardsPool.indexOf(i);
+                  state.cardsPool.splice(index, i);
+                  break;
+                }
+              }
             }, 1000);
           }
           if (state.PlayerBTotal > 13) {
