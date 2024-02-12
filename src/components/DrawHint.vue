@@ -3,7 +3,7 @@
     <v-snackbar
       v-model="drawHintVisible"
       class="custom-snackbar"
-      color="grey-lighten-5"
+      color="brown-lighten-1"
     >
       {{ text }}
     </v-snackbar>
@@ -28,5 +28,11 @@ export default {
 <style scoped>
 .custom-snackbar {
   bottom: 50%;
+}
+
+@media (max-width: 37.5em) {
+  .custom-snackbar {
+    bottom: 85%;
+  }
 }
 </style>

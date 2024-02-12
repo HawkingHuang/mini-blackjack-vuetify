@@ -383,13 +383,15 @@ export default createStore({
       ];
       state.PlayerAPool = [];
       state.PlayerBPool = [];
-      state.PlayerATotal = 0;
-      state.PlayerBTotal = 0;
+      // state.PlayerATotal = 0;
+      // state.PlayerBTotal = 0;
       state.PlayerADisabled = true;
       state.PlayerBDisabled = false;
       setTimeout(() => {
         state.playerAHasDrawn = true;
         state.playerBHasDrawn = false;
+        state.PlayerATotal = 0;
+        state.PlayerBTotal = 0;
         this.commit("playerAClick");
       }, 500);
     },
