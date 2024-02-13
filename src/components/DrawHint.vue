@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      text: "Now its your turn!",
+      text: "Now it's your turn!",
     };
   },
   computed: {

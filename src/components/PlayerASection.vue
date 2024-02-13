@@ -32,7 +32,7 @@
               >
                 <v-card width="4.5rem">
                   <v-card-item>
-                    <!-- <v-card-title
+                    <v-card-title
                       class="text-h6 py-5 text-center"
                       :style="{
                         color:
@@ -41,10 +41,10 @@
                             : 'black',
                       }"
                       >{{ n }}</v-card-title
-                    > -->
-                    <v-card-title class="text-h6 py-5 text-center">{{
+                    >
+                    <!-- <v-card-title class="text-h6 py-5 text-center">{{
                       n
-                    }}</v-card-title>
+                    }}</v-card-title> -->
                   </v-card-item>
                 </v-card>
               </v-col>
