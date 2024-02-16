@@ -5,9 +5,13 @@
         <div class="section-total-and-bet-a">
           <v-card width="400" class="mb-5 p-5 card">
             <v-card-item>
-              <v-card-title class="text-h6 text-md-h4 pa-3"
-                >Computer</v-card-title
-              >
+              <v-card-title class="text-h6 text-md-h4 d-flex align-center"
+                >Computer<img
+                  :src="robot"
+                  alt="robot"
+                  style="width: 50px; padding: 5px"
+                  class="player"
+              /></v-card-title>
             </v-card-item>
 
             <v-card-text class="text-body-1 text-md-h5"
@@ -39,6 +43,7 @@
                           index === 0 || typeof n !== 'number'
                             ? 'white'
                             : 'black',
+                        userSelect: 'none',
                       }"
                       >{{ n }}</v-card-title
                     >
@@ -57,9 +62,13 @@
 </template>
 
 <script>
+import robot from "@/assets/imgs/robot.png";
+
 export default {
   data() {
-    return {};
+    return {
+      robot,
+    };
   },
   mounted() {
     this.bet();
@@ -84,6 +93,12 @@ export default {
 @media (max-width: 37.5em) {
   .card {
     max-width: 15rem;
+  }
+}
+
+@media (max-width: 60em) {
+  .player {
+    width: 40px !important;
   }
 }
 </style>

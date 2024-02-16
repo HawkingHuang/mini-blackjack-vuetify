@@ -5,9 +5,13 @@
         <div class="section-total-and-bet-a">
           <v-card width="400" class="mb-5 card">
             <v-card-item>
-              <v-card-title class="text-h6 text-md-h4 pa-3"
-                >Player</v-card-title
-              >
+              <v-card-title class="text-h6 text-md-h4 d-flex align-center"
+                >Player<img
+                  :src="gaming"
+                  alt="gaming"
+                  style="width: 50px; padding: 5px"
+                  class="player"
+              /></v-card-title>
             </v-card-item>
 
             <div style="display: flex; justify-content: space-between">
@@ -66,9 +70,13 @@
 </template>
 
 <script>
+import gaming from "@/assets/imgs/gaming.png";
+
 export default {
   data() {
-    return {};
+    return {
+      gaming,
+    };
   },
   computed: {
     PlayerBPool() {
@@ -100,6 +108,12 @@ export default {
 @media (max-width: 37.5em) {
   .card {
     max-width: 15rem;
+  }
+}
+
+@media (max-width: 60em) {
+  .player {
+    width: 40px !important;
   }
 }
 </style>

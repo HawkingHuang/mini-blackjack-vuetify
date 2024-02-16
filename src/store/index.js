@@ -22,7 +22,6 @@ export default createStore({
         "A5",
         "+24",
         "BS",
-        "BS",
       ],
       PlayerAPool: [],
       PlayerBPool: [],
@@ -404,12 +403,9 @@ export default createStore({
         "A5",
         "+24",
         "BS",
-        "BS",
       ];
       state.PlayerAPool = [];
       state.PlayerBPool = [];
-      // state.PlayerATotal = 0;
-      // state.PlayerBTotal = 0;
       state.PlayerADisabled = true;
       state.PlayerBDisabled = false;
       setTimeout(() => {
