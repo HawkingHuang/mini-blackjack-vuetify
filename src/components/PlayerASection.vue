@@ -14,8 +14,12 @@
               /></v-card-title>
             </v-card-item>
 
-            <v-card-text class="text-body-1 text-md-h5"
-              >Score
+            <v-card-text class="text-body-1 text-md-h5 d-flex align-center">
+              <img
+                :src="score"
+                alt="score"
+                style="width: 35px; padding-right: 8px"
+              />
               <span class="text-blue-lighten-1"
                 >? + {{ PlayerATotal }}</span
               ></v-card-text
@@ -63,11 +67,13 @@
 
 <script>
 import robot from "@/assets/imgs/robot.png";
+import score from "@/assets/imgs/score.png";
 
 export default {
   data() {
     return {
       robot,
+      score,
     };
   },
   mounted() {

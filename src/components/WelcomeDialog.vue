@@ -2,7 +2,8 @@
   <v-dialog v-model="dialogVisible" class="text-center">
     <v-card>
       <v-card-title class="text-h6 text-md-h4 bg-blue-lighten-1 py-10 title"
-        >Challenger, Welcome!
+        ><img :src="party" alt="party" class="party left" />Challenger,
+        Welcome!<img :src="party" alt="party" class="party" />
       </v-card-title>
       <v-card-text class="text-body-1 text-md-h5"
         >VV Mini-Blackjack is a game inspired by the DLC <i>21</i> in
@@ -38,10 +39,13 @@
 </template>
 
 <script>
+import party from "@/assets/imgs/party.png";
+
 export default {
   data() {
     return {
       dialogVisible: true,
+      party,
     };
   },
   methods: {
@@ -52,4 +56,19 @@ export default {
 };
 </script>
 
-<style scpoed></style>
+<style scpoed>
+.party {
+  width: 50px;
+  padding: 5px;
+}
+
+.left {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 60em) {
+  .party {
+    width: 35px !important;
+  }
+}
+</style>
