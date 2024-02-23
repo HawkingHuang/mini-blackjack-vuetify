@@ -408,6 +408,7 @@ export default createStore({
       state.PlayerBPool = [];
       state.PlayerADisabled = true;
       state.PlayerBDisabled = false;
+      state.limit = 21;
       setTimeout(() => {
         state.playerAHasDrawn = true;
         state.playerBHasDrawn = false;
