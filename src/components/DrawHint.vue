@@ -11,16 +11,17 @@
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+
 export default {
-  data() {
-    return {
-      text: "Now it's your turn!",
-    };
-  },
-  computed: {
-    drawHintVisible() {
-      return !this.$store.state.PlayerBDisabled;
-    },
+  setup() {
+    const store = useStore();
+
+    const text = ref("Now it's your turn!");
+    const drawHintVisible = computed(() => !store.state.PlayerBDisabled);
+
+    return { text, drawHintVisible };
   },
 };
 </script>
