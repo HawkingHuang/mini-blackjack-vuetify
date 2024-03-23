@@ -264,19 +264,20 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  data() {
-    return {
-      dialogVisible: false,
-    };
-  },
-  methods: {
-    openDialog() {
-      this.dialogVisible = true;
-    },
-    reset() {
-      this.$store.commit("reset");
-    },
+  setup() {
+    const store = useStore();
+
+    let dialogVisible = ref(false);
+    function openDialog() {
+      dialogVisible.value = true;
+    }
+    function reset() {
+      store.commit("reset");
+    }
+    return { dialogVisible, openDialog, reset };
   },
 };
 </script>
