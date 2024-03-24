@@ -86,6 +86,8 @@
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 import gaming from "@/assets/imgs/gaming.png";
 import score from "@/assets/imgs/score.png";
 import warning from "@/assets/imgs/warning.png";
@@ -93,37 +95,35 @@ import cardGame from "@/assets/imgs/card-game.png";
 import stopping from "@/assets/imgs/stop.png";
 
 export default {
-  data() {
+  setup() {
+    const store = useStore();
+
+    function bet() {
+      store.commit("playerBClick");
+    }
+    function stop() {
+      store.commit("playerBStop");
+    }
+    function applySpeCard(n) {
+      store.commit("applySpeCard", n);
+    }
+    const PlayerBPool = computed(() => store.getters.PlayerBPool);
+    const PlayerBTotal = computed(() => store.state.PlayerBTotal);
+    const PlayerBDisabled = computed(() => store.state.PlayerBDisabled);
+
     return {
       gaming,
       score,
       warning,
       cardGame,
       stopping,
+      bet,
+      stop,
+      applySpeCard,
+      PlayerBPool,
+      PlayerBTotal,
+      PlayerBDisabled,
     };
-  },
-  computed: {
-    PlayerBPool() {
-      return this.$store.getters.PlayerBPool;
-    },
-    PlayerBTotal() {
-      return this.$store.state.PlayerBTotal;
-    },
-    PlayerBDisabled() {
-      return this.$store.state.PlayerBDisabled;
-    },
-  },
-  methods: {
-    bet() {
-      this.$store.commit("playerBClick");
-    },
-    stop() {
-      this.$store.commit("playerBStop");
-    },
-    applySpeCard(n) {
-      this.$store.commit("applySpeCard", n);
-      console.log(n);
-    },
   },
 };
 </script>

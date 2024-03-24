@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import party from "@/assets/imgs/party.png";
 import { ref } from "vue";
+import party from "@/assets/imgs/party.png";
 
 export default {
   setup() {
@@ -49,7 +49,7 @@ export default {
       dialogVisible.value = false;
     }
 
-    return { dialogVisible, party, closeDialog };
+    return { party, dialogVisible, closeDialog };
   },
 };
 </script>

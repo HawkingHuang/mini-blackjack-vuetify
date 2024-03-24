@@ -66,31 +66,25 @@
 </template>
 
 <script>
+import { ref, computed, onMounted } from "vue";
+import { useStore } from "vuex";
 import robot from "@/assets/imgs/robot.png";
 import score from "@/assets/imgs/score.png";
 
 export default {
-  data() {
-    return {
-      robot,
-      score,
-    };
-  },
-  mounted() {
-    this.bet();
-  },
-  computed: {
-    PlayerAPool() {
-      return this.$store.getters.PlayerAPool;
-    },
-    PlayerATotal() {
-      return this.$store.state.PlayerATotal - this.$store.state.PlayerAPool[0];
-    },
-  },
-  methods: {
-    bet() {
-      this.$store.commit("playerAClick");
-    },
+  setup() {
+    const store = useStore();
+
+    function bet() {
+      store.commit("playerAClick");
+    }
+    const PlayerAPool = computed(() => store.getters.PlayerAPool);
+    const PlayerATotal = computed(
+      () => store.state.PlayerATotal - store.state.PlayerAPool[0]
+    );
+
+    onMounted(() => bet());
+    return { robot, score, bet, PlayerAPool, PlayerATotal };
   },
 };
 </script>
