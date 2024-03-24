@@ -63,22 +63,22 @@
 </template>
 
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
+
 export default {
-  methods: {
-    closeDialog() {
-      this.$store.commit("reset");
-    },
-  },
-  computed: {
-    winner() {
-      return this.$store.getters.winner;
-    },
-    PlayerAPool() {
-      return this.$store.getters.PlayerAPool;
-    },
-    PlayerBPool() {
-      return this.$store.getters.PlayerBPool;
-    },
+  setup() {
+    const store = useStore();
+
+    function closeDialog() {
+      store.commit("reset");
+    }
+
+    const winner = computed(() => store.getters.winner);
+    const PlayerAPool = computed(() => store.getters.PlayerAPool);
+    const PlayerBPool = computed(() => store.getters.PlayerBPool);
+
+    return { closeDialog, winner, PlayerAPool, PlayerBPool };
   },
 };
 </script>
