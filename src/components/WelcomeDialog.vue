@@ -40,18 +40,16 @@
 
 <script>
 import party from "@/assets/imgs/party.png";
+import { ref } from "vue";
 
 export default {
-  data() {
-    return {
-      dialogVisible: true,
-      party,
-    };
-  },
-  methods: {
-    closeDialog() {
-      this.dialogVisible = false;
-    },
+  setup() {
+    let dialogVisible = ref(true);
+    function closeDialog() {
+      dialogVisible.value = false;
+    }
+
+    return { dialogVisible, party, closeDialog };
   },
 };
 </script>
